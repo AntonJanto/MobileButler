@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "150007654151",
+    "project_id": "mobile-butler",
+    "storage_bucket": "mobile-butler.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:150007654151:android:e11d7b19d82ffa96be07a2",
+        "android_client_info": {
+          "package_name": "me.antonjanto.mobilebutler"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "150007654151-kofgegk86nk9md843icaqv9ro821m4qs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.antonjanto.mobilebutler",
+            "certificate_hash": "5721283515eeb071ba350327c670d37fe3e3e164"
+          }
+        },
+        {
+          "client_id": "150007654151-kvre4o1kdu172sage9fnbv07pg0rh3cv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkCj76vKW46kkugwf88fq59aUN4FVgbHw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "150007654151-kvre4o1kdu172sage9fnbv07pg0rh3cv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

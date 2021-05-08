@@ -19,7 +19,7 @@ This list of requirements is only something to get started with. It hopefully in
  - As an employee I want to be able to assign an order to a table
 
 ### Non-functional
- - Every order includes the time it was created
+ - Every order includes the time it was closed
  - Every order includes the total sum
  - Every product includes its price, product name, and product number
  - Products are loaded from the central database api

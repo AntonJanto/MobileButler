@@ -1,29 +1,56 @@
 package me.antonjanto.mobilebutler.model;
 
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.antonjanto.mobilebutler.repository.sqlite.converters.DateConverter;
+
+@Entity(tableName = "order")
 public class Order
 {
-     private long id;
+     @PrimaryKey(autoGenerate = true)
+     private long orderId;
      private double totalPrice;
-     private LocalDateTime closed;
+     private boolean closed;
+     @TypeConverters(DateConverter.class)
+     private LocalDateTime closedTime;
+     @Ignore
      private List<OrderItem> items;
+     private long tableId;
 
      public Order()
      {
-          items = new ArrayList<>();
+          this.closed = false;
+          this.totalPrice = 0;
+          this.tableId = 0;
+          this.items = new ArrayList<>();
+          this.closedTime = null;
      }
 
-     public long getId()
+     public long getTableId()
      {
-          return id;
+          return tableId;
      }
 
-     public void setId(long id)
+     public void setTableId(long tableId)
      {
-          this.id = id;
+          this.tableId = tableId;
+     }
+
+     public long getOrderId()
+     {
+          return orderId;
+     }
+
+     public void setOrderId(long orderId)
+     {
+          this.orderId = orderId;
      }
 
      public double getTotalPrice()
@@ -36,14 +63,14 @@ public class Order
           this.totalPrice = totalPrice;
      }
 
-     public LocalDateTime getClosed()
+     public LocalDateTime getClosedTime()
      {
-          return closed;
+          return closedTime;
      }
 
-     public void setClosed(LocalDateTime closed)
+     public void setClosedTime(LocalDateTime closedTime)
      {
-          this.closed = closed;
+          this.closedTime = closedTime;
      }
 
      public List<OrderItem> getItems()
@@ -54,5 +81,15 @@ public class Order
      public void setItems(List<OrderItem> items)
      {
           this.items = items;
+     }
+
+     public boolean isClosed()
+     {
+          return closed;
+     }
+
+     public void setClosed(boolean closed)
+     {
+          this.closed = closed;
      }
 }

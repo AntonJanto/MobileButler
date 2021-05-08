@@ -1,11 +1,18 @@
 package me.antonjanto.mobilebutler.model;
 
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity(tableName = "table")
 public class Table
 {
+     @PrimaryKey
      private long number;
+     @Ignore
      private List<Order> orders;
 
      public Table()

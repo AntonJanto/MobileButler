@@ -1,8 +1,12 @@
 package me.antonjanto.mobilebutler.model;
 
+import androidx.room.Ignore;
+
+
 public class Product
 {
-     private long id;
+     @Ignore
+     private long productId;
      private String name;
      private double unitPrice;
      private String unit;
@@ -13,14 +17,14 @@ public class Product
      {
      }
 
-     public long getId()
+     public long getProductId()
      {
-          return id;
+          return productId;
      }
 
-     public void setId(long id)
+     public void setProductId(long productId)
      {
-          this.id = id;
+          this.productId = productId;
      }
 
      public String getName()

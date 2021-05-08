@@ -1,6 +1,7 @@
 package me.antonjanto.mobilebutler;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 
@@ -8,6 +9,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -15,6 +18,18 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import me.antonjanto.mobilebutler.model.Order;
+import me.antonjanto.mobilebutler.model.OrderItem;
+import me.antonjanto.mobilebutler.model.Product;
+import me.antonjanto.mobilebutler.repository.OrderRepository;
+import me.antonjanto.mobilebutler.repository.OrderRepositoryImpl;
+import me.antonjanto.mobilebutler.services.OrderService;
+import me.antonjanto.mobilebutler.services.OrderServiceImpl;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -41,6 +56,8 @@ public class MainActivity extends AppCompatActivity
           NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
           NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
           NavigationUI.setupWithNavController(navigationView, navController);
+
+
      }
 
      @Override

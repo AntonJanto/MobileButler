@@ -17,18 +17,32 @@ import me.antonjanto.mobilebutler.repository.sqlite.OrderDao;
 
 public class OrderRepositoryImpl implements OrderRepository
 {
+     private static OrderRepository instance;
+
      private final OrderDao orderDao;
 
      private final LiveData<List<Order>> allOrders;
      private final LiveData<List<Order>> openedOrders;
 
-     public OrderRepositoryImpl(Application application)
+     private OrderRepositoryImpl(Application application)
      {
           orderDao = MobileButlerDatabase
                .getInstance(application.getApplicationContext())
                .orderDao();
           openedOrders = mapOrders(orderDao.getOpenedOrders());
           allOrders = mapOrders(orderDao.getAllOrders());
+     }
+
+     public static OrderRepository getInstance(Application application)
+     {
+          if (instance == null)
+               instance = new OrderRepositoryImpl(application);
+          return instance;
+     }
+
+     public static OrderRepository getInstance()
+     {
+          return instance;
      }
 
      @NotNull

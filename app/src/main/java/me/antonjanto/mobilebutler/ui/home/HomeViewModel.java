@@ -4,9 +4,6 @@ import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -15,7 +12,6 @@ import me.antonjanto.mobilebutler.repository.OrderRepository;
 import me.antonjanto.mobilebutler.repository.OrderRepositoryImpl;
 import me.antonjanto.mobilebutler.services.OrderService;
 import me.antonjanto.mobilebutler.services.OrderServiceImpl;
-import me.antonjanto.mobilebutler.ui.adapters.OrderAdapter;
 
 public class HomeViewModel extends AndroidViewModel
 {
@@ -25,7 +21,7 @@ public class HomeViewModel extends AndroidViewModel
      public HomeViewModel(Application application)
      {
           super(application);
-          OrderRepository repo = new OrderRepositoryImpl(application);
+          OrderRepository repo = OrderRepositoryImpl.getInstance();
           orderService = new OrderServiceImpl(repo);
           orders = orderService.getOpenOrders();
      }
@@ -33,5 +29,10 @@ public class HomeViewModel extends AndroidViewModel
      public LiveData<List<Order>> getOrders()
      {
           return orders;
+     }
+
+     public void createOrder()
+     {
+          orderService.openOrder(null);
      }
 }

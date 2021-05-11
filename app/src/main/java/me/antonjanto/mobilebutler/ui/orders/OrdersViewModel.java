@@ -1,4 +1,4 @@
-package me.antonjanto.mobilebutler.ui.home;
+package me.antonjanto.mobilebutler.ui.orders;
 
 import android.app.Application;
 
@@ -13,12 +13,12 @@ import me.antonjanto.mobilebutler.repository.OrderRepositoryImpl;
 import me.antonjanto.mobilebutler.services.OrderService;
 import me.antonjanto.mobilebutler.services.OrderServiceImpl;
 
-public class HomeViewModel extends AndroidViewModel
+public class OrdersViewModel extends AndroidViewModel
 {
      private LiveData<List<Order>> orders;
      private OrderService orderService;
 
-     public HomeViewModel(Application application)
+     public OrdersViewModel(Application application)
      {
           super(application);
           OrderRepository repo = OrderRepositoryImpl.getInstance();

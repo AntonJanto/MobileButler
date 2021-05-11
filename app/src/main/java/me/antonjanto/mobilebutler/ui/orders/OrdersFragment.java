@@ -1,4 +1,4 @@
-package me.antonjanto.mobilebutler.ui.home;
+package me.antonjanto.mobilebutler.ui.orders;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,11 +7,10 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -22,16 +21,16 @@ import me.antonjanto.mobilebutler.R;
 import me.antonjanto.mobilebutler.model.Order;
 import me.antonjanto.mobilebutler.ui.adapters.OrderAdapter;
 
-public class HomeFragment extends Fragment
+public class OrdersFragment extends Fragment
 {
-     private HomeViewModel homeViewModel;
+     private OrdersViewModel ordersViewModel;
      private RecyclerView orderView;
      private FloatingActionButton fab;
 
      public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
      {
-          homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-          View root = inflater.inflate(R.layout.fragment_home, container, false);
+          ordersViewModel = new ViewModelProvider(this).get(OrdersViewModel.class);
+          View root = inflater.inflate(R.layout.fragment_orders, container, false);
 
           fab = root.findViewById(R.id.fab);
           fab.setOnClickListener((view) -> fabClicked(view));
@@ -43,12 +42,12 @@ public class HomeFragment extends Fragment
 
      private void setupRecyclerView(View root)
      {
-          orderView.setLayoutManager(new GridLayoutManager(root.getContext(), 2));
+          orderView.setLayoutManager(new LinearLayoutManager(root.getContext()));
 
           OrderAdapter orderAdapter = new OrderAdapter();
           orderView.setAdapter(orderAdapter);
-          orderAdapter.setOrders(homeViewModel.getOrders().getValue());
-          homeViewModel.getOrders().observe(getViewLifecycleOwner(), new Observer<List<Order>>()
+          orderAdapter.setOrders(ordersViewModel.getOrders().getValue());
+          ordersViewModel.getOrders().observe(getViewLifecycleOwner(), new Observer<List<Order>>()
           {
                @Override
                public void onChanged(List<Order> orders)
@@ -61,6 +60,6 @@ public class HomeFragment extends Fragment
 
      private void fabClicked(View view)
      {
-          homeViewModel.createOrder();
+          ordersViewModel.createOrder();
      }
 }

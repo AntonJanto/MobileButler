@@ -39,12 +39,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>
      public void onBindViewHolder(@NonNull OrderAdapter.ViewHolder holder, int position)
      {
           holder.orderId.setText(String.valueOf(orders.get(position).getOrderId()));
-          if (orders.get(position).getItems() != null) {
-               holder.orderItems.setText(String.valueOf(orders.get(position).getItems().size()));
-          }
-          else {
-               holder.orderItems.setText("0");
-          }
           holder.orderPrice.setText(String.valueOf(orders.get(position).getTotalPrice()));
      }
 
@@ -59,14 +53,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>
      protected class ViewHolder extends RecyclerView.ViewHolder
      {
           TextView orderId;
-          TextView orderItems;
           TextView orderPrice;
 
           ViewHolder(View itemView)
           {
                super(itemView);
                orderId = itemView.findViewById(R.id.order_id);
-               orderItems = itemView.findViewById(R.id.order_items);
                orderPrice = itemView.findViewById(R.id.order_price);
           }
      }

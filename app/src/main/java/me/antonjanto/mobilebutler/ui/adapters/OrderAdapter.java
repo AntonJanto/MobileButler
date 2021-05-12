@@ -26,6 +26,14 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>
           this.orders = orders;
      }
 
+     public long getOrderId(int position)
+     {
+          if (orders != null)
+               if (orders.get(position) != null)
+                    return orders.get(position).getOrderId();
+          return 0;
+     }
+
      @NonNull
      @Override
      public OrderAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)

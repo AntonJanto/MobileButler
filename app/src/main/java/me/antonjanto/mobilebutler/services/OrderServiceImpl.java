@@ -30,4 +30,10 @@ public class OrderServiceImpl implements OrderService
      {
           return orderRepository.getOpenOrders();
      }
+
+     @Override
+     public LiveData<Order> getOrder(long orderId)
+     {
+          return orderRepository.getOrder(orderId);
+     }
 }

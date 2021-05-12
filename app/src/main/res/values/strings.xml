@@ -13,4 +13,6 @@
     <string name="order_number">Order number:</string>
     <string name="currency">€</string>
     <string name="tables">Tables</string>
+    <string name="open_new_order">Open new order</string>
+    <string name="order_items_text">Ordered items</string>
 </resources>

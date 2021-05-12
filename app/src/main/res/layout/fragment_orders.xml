@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.orders.OrdersFragment">
+        tools:context=".ui.orders.many.OrdersFragment">
 
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
@@ -24,5 +24,6 @@
             android:layout_margin="@dimen/fab_margin"
             app:srcCompat="@android:drawable/ic_input_add"
             app:layout_constraintBottom_toBottomOf="@+id/recyclerView_orders"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:contentDescription="@string/open_new_order" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,4 +11,5 @@ public interface OrderRepository
      LiveData<List<Order>> getAllOrders();
      LiveData<List<Order>> getOpenOrders();
      void insertNewOrder(Order order);
+     LiveData<Order> getOrder(long orderId);
 }

@@ -1,4 +1,4 @@
-package me.antonjanto.mobilebutler.ui.orders;
+package me.antonjanto.mobilebutler.ui.orders.many;
 
 import android.app.Application;
 

@@ -8,6 +8,7 @@ import androidx.lifecycle.Transformations;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.ListIterator;
 import java.util.stream.Collectors;
 
 import me.antonjanto.mobilebutler.model.Order;
@@ -56,6 +57,14 @@ public class OrderRepositoryImpl implements OrderRepository
           }).collect(Collectors.toList()));
      }
 
+     private LiveData<Order> mapOrder(LiveData<OrderWithOrderItemsEntity> order)
+     {
+          return Transformations.map(order, or -> {
+               or.order.setItems(or.orderItem);
+               return or.order;
+          });
+     }
+
      @Override
      public LiveData<List<Order>> getAllOrders()
      {
@@ -72,6 +81,12 @@ public class OrderRepositoryImpl implements OrderRepository
      public void insertNewOrder(Order order)
      {
           new InsertOrderAsync(orderDao).execute(order);
+     }
+
+     @Override
+     public LiveData<Order> getOrder(long orderId)
+     {
+          return mapOrder(orderDao.getOrder(orderId));
      }
 
      private static class InsertOrderAsync extends AsyncTask<Order, Void, Void>

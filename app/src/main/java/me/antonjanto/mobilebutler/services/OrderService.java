@@ -10,4 +10,5 @@ public interface OrderService
 {
      void openOrder(Long tableNumber);
      LiveData<List<Order>> getOpenOrders();
+     LiveData<Order> getOrder(long orderId);
 }

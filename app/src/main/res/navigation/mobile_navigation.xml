@@ -7,8 +7,23 @@
 
     <fragment
             android:id="@+id/nav_orders"
-            android:name="me.antonjanto.mobilebutler.ui.orders.OrdersFragment"
+            android:name="me.antonjanto.mobilebutler.ui.orders.many.OrdersFragment"
             android:label="@string/menu_orders"
-            tools:layout="@layout/fragment_orders" />
-
+            tools:layout="@layout/fragment_orders">
+        <action
+                android:id="@+id/action_nav_orders_to_nav_single_order"
+                app:destination="@id/nav_single_order" />
+    </fragment>
+    <fragment
+            android:id="@+id/nav_single_order"
+            android:name="me.antonjanto.mobilebutler.ui.orders.single.SingleOrderFragment"
+            android:label="{title}"
+            tools:layout="@layout/fragment_single_order">
+        <argument
+                android:name="orderId"
+                app:argType="long" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
 </navigation>

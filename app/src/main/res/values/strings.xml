@@ -10,9 +10,12 @@
     <string name="menu_orders">Orders</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-    <string name="order_number">Order number:</string>
+    <string name="order_number">Order number</string>
     <string name="currency">€</string>
     <string name="tables">Tables</string>
     <string name="open_new_order">Open new order</string>
     <string name="order_items_text">Ordered items</string>
+    <string name="table_number">Table number</string>
+    <string name="order_closed">Order closed</string>
+    <string name="not_closed">Not closed yet</string>
 </resources>

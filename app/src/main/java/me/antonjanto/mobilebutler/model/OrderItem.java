@@ -70,4 +70,14 @@ public class OrderItem
      {
           return product.getUnitPrice() * quantity;
      }
+
+     public double getUnitPrice()
+     {
+          return product.getUnitPrice();
+     }
+
+     public String getProductName()
+     {
+          return product.getName();
+     }
 }

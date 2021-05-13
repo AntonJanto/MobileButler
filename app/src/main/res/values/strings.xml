@@ -18,4 +18,6 @@
     <string name="table_number">Table number</string>
     <string name="order_closed">Order closed</string>
     <string name="not_closed">Not closed yet</string>
+    <string name="single_order_items_none">No items were ordered</string>
+    <string name="x_quantity">x</string>
 </resources>

@@ -17,10 +17,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>
 {
      private List<Order> orders;
 
-     public OrderAdapter()
-     {
-     }
-
      public void setOrders(List<Order> orders)
      {
           this.orders = orders;

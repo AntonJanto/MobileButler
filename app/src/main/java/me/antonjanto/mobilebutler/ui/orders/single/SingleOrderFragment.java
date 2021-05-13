@@ -27,19 +27,26 @@ public class SingleOrderFragment extends Fragment
      {
           super.onCreate(savedInstanceState);
           mViewModel = new ViewModelProvider(this).get(SingleOrderViewModel.class);
-          View root = inflater.inflate(R.layout.fragment_single_order, container, false);
+          return inflater.inflate(R.layout.fragment_single_order, container, false);
+     }
+
+     @Override
+     public void onViewCreated(@NonNull View view, Bundle savedInstanceState)
+     {
+          super.onViewCreated(view, savedInstanceState);
+
           long orderId = getArguments().getLong("orderId");
           mViewModel.fetchOrder(orderId);
 
-          viewPager = root.findViewById(R.id.single_order_pager);
-          tabLayout = root.findViewById(R.id.single_order_tab_layout);
+          viewPager = view.findViewById(R.id.single_order_pager);
+          tabLayout = view.findViewById(R.id.single_order_tab_layout);
 
           singleOrderPagerAdapter = new SingleOrderPagerAdapter(this);
           singleOrderPagerAdapter.setOrderId(orderId);
           viewPager.setAdapter(singleOrderPagerAdapter);
 
           new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
-               String tabName = "";
+               String tabName;
                switch (position) {
                     case 0:
                          tabName = "Items";
@@ -52,14 +59,6 @@ public class SingleOrderFragment extends Fragment
                }
                tab.setText(tabName);
           }).attach();
-          return root;
-     }
-
-     @Override
-     public void onViewCreated(View view, Bundle savedInstanceState)
-     {
-          super.onViewCreated(view, savedInstanceState);
-
      }
 }
 

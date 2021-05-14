@@ -1,6 +1,5 @@
 package me.antonjanto.mobilebutler.ui.orders.many;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,12 +7,9 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,7 +21,6 @@ import me.antonjanto.mobilebutler.R;
 import me.antonjanto.mobilebutler.model.Order;
 import me.antonjanto.mobilebutler.ui.adapters.OrderAdapter;
 import me.antonjanto.mobilebutler.ui.adapters.RecyclerTouchListener;
-import me.antonjanto.mobilebutler.ui.orders.single.SingleOrderFragment;
 
 public class OrdersFragment extends Fragment
 {
@@ -70,7 +65,7 @@ public class OrdersFragment extends Fragment
                public void onClick(View view, int position)
                {
                     long orderId = ((OrderAdapter)recyclerViewOrders.getAdapter()).getOrderId(position);
-                    updateOrder(orderId);
+                    navigateToSingleOrder(orderId);
                }
 
                @Override
@@ -81,7 +76,7 @@ public class OrdersFragment extends Fragment
           }));
      }
 
-     private void updateOrder(long orderId)
+     private void navigateToSingleOrder(long orderId)
      {
           Bundle bundle = new Bundle();
           bundle.putLong("orderId", orderId);

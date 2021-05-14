@@ -18,7 +18,7 @@ import me.antonjanto.mobilebutler.R;
 public class SingleOrderFragment extends Fragment
 {
      private SingleOrderPagerAdapter singleOrderPagerAdapter;
-     private SingleOrderViewModel mViewModel;
+     private SingleOrderViewModel singleOrderViewModel;
      private ViewPager2 viewPager;
      private TabLayout tabLayout;
 
@@ -26,7 +26,7 @@ public class SingleOrderFragment extends Fragment
           Bundle savedInstanceState)
      {
           super.onCreate(savedInstanceState);
-          mViewModel = new ViewModelProvider(this).get(SingleOrderViewModel.class);
+          singleOrderViewModel = new ViewModelProvider(this).get(SingleOrderViewModel.class);
           return inflater.inflate(R.layout.fragment_single_order, container, false);
      }
 
@@ -36,7 +36,7 @@ public class SingleOrderFragment extends Fragment
           super.onViewCreated(view, savedInstanceState);
 
           long orderId = getArguments().getLong("orderId");
-          mViewModel.fetchOrder(orderId);
+          singleOrderViewModel.fetchOrder(orderId);
 
           viewPager = view.findViewById(R.id.single_order_pager);
           tabLayout = view.findViewById(R.id.single_order_tab_layout);
@@ -60,5 +60,6 @@ public class SingleOrderFragment extends Fragment
                tab.setText(tabName);
           }).attach();
      }
+
 }
 

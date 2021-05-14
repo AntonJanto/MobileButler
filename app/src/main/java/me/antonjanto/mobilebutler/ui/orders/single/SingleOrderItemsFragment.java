@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -85,5 +86,6 @@ public class SingleOrderItemsFragment extends Fragment
      private void fabPressed(View view)
      {
           Toast.makeText(getContext(), "Add Item", Toast.LENGTH_LONG).show();
+          NavHostFragment.findNavController(this).navigate(R.id.action_nav_single_order_to_nav_products);
      }
 }

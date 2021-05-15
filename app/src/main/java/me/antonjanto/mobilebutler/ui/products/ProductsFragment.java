@@ -1,5 +1,6 @@
 package me.antonjanto.mobilebutler.ui.products;
 
+import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -62,22 +63,7 @@ public class ProductsFragment extends Fragment
 
           productsRecyclerView.addOnItemTouchListener(
                new RecyclerTouchListener(getContext(), productsRecyclerView,
-                    new RecyclerTouchListener.ClickListener()
-                    {
-                         @Override
-                         public void onClick(View view, int position)
-                         {
-                              productsViewModel.addProductToOrder(position, 1);
-                              navigateBack();
-                         }
-
-                         @Override
-                         public void onLongClick(View view, int position)
-                         {
-                              Toast.makeText(getContext(), "LongTouch", Toast.LENGTH_LONG).show();
-                              navigateBack();
-                         }
-                    }));
+                    new ProductsRecyclertouchListener()));
      }
 
      private void navigateBack()
@@ -87,5 +73,26 @@ public class ProductsFragment extends Fragment
           ProductsFragmentDirections.ActionNavProductsToNavSingleOrder action = ProductsFragmentDirections
                .actionNavProductsToNavSingleOrder(orderId, String.valueOf(orderId));
           NavHostFragment.findNavController(this).navigate(action);
+     }
+
+     private class ProductsRecyclertouchListener implements RecyclerTouchListener.ClickListener
+     {
+          @Override
+          public void onClick(View view, int position)
+          {
+               productsViewModel.addProductToOrder(position, 1);
+               navigateBack();
+          }
+
+          @Override
+          public void onLongClick(View view, int position)
+          {
+               QuantityDialogFragment dialog = new QuantityDialogFragment();
+               dialog.setNoticeQuantityListener((quantity) -> {
+                    productsViewModel.addProductToOrder(position, quantity);
+                    navigateBack();
+               });
+               dialog.show(requireActivity().getSupportFragmentManager(), "QuantityDialogFragment");
+          }
      }
 }

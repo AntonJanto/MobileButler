@@ -22,4 +22,7 @@
     <string name="x_quantity">x</string>
     <string name="products">Products</string>
     <string name="sum">Sum</string>
+    <string name="quantity">Quantity</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 </resources>

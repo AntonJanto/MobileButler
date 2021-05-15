@@ -10,7 +10,6 @@ import java.lang.annotation.RetentionPolicy;
 public class Product implements Serializable
 {
      @Ignore
-     @ColumnInfo(name = "ignored")
      private long productId;
      private String name;
      private double unitPrice;

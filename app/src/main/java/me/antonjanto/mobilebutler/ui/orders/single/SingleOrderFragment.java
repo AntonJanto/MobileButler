@@ -14,11 +14,11 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import me.antonjanto.mobilebutler.R;
+import me.antonjanto.mobilebutler.ui.adapters.SingleOrderPagerAdapter;
 
 public class SingleOrderFragment extends Fragment
 {
      private SingleOrderPagerAdapter singleOrderPagerAdapter;
-     private SingleOrderViewModel singleOrderViewModel;
      private ViewPager2 viewPager;
      private TabLayout tabLayout;
 
@@ -26,7 +26,6 @@ public class SingleOrderFragment extends Fragment
           Bundle savedInstanceState)
      {
           super.onCreate(savedInstanceState);
-          singleOrderViewModel = new ViewModelProvider(this).get(SingleOrderViewModel.class);
           return inflater.inflate(R.layout.fragment_single_order, container, false);
      }
 
@@ -35,14 +34,10 @@ public class SingleOrderFragment extends Fragment
      {
           super.onViewCreated(view, savedInstanceState);
 
-          long orderId = getArguments().getLong("orderId");
-          singleOrderViewModel.fetchOrder(orderId);
-
           viewPager = view.findViewById(R.id.single_order_pager);
           tabLayout = view.findViewById(R.id.single_order_tab_layout);
 
           singleOrderPagerAdapter = new SingleOrderPagerAdapter(this);
-          singleOrderPagerAdapter.setOrderId(orderId);
           viewPager.setAdapter(singleOrderPagerAdapter);
 
           new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {

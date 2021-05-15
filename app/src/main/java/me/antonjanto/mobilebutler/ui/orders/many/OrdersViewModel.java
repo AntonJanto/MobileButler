@@ -21,8 +21,7 @@ public class OrdersViewModel extends AndroidViewModel
      public OrdersViewModel(Application application)
      {
           super(application);
-          OrderRepository repo = OrderRepositoryImpl.getInstance();
-          orderService = new OrderServiceImpl(repo);
+          orderService = new OrderServiceImpl();
           orders = orderService.getOpenOrders();
      }
 

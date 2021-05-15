@@ -19,7 +19,7 @@ import java.util.List;
 
 import me.antonjanto.mobilebutler.R;
 import me.antonjanto.mobilebutler.model.Order;
-import me.antonjanto.mobilebutler.ui.adapters.OrderAdapter;
+import me.antonjanto.mobilebutler.ui.adapters.OrdersAdapter;
 import me.antonjanto.mobilebutler.ui.adapters.RecyclerTouchListener;
 
 public class OrdersFragment extends Fragment
@@ -45,16 +45,16 @@ public class OrdersFragment extends Fragment
      {
           recyclerViewOrders.setLayoutManager(new LinearLayoutManager(root.getContext()));
 
-          OrderAdapter orderAdapter = new OrderAdapter();
-          recyclerViewOrders.setAdapter(orderAdapter);
-          orderAdapter.setOrders(ordersViewModel.getOrders().getValue());
+          OrdersAdapter ordersAdapter = new OrdersAdapter();
+          recyclerViewOrders.setAdapter(ordersAdapter);
+          ordersAdapter.setOrders(ordersViewModel.getOrders().getValue());
           ordersViewModel.getOrders().observe(getViewLifecycleOwner(), new Observer<List<Order>>()
           {
                @Override
                public void onChanged(List<Order> orders)
                {
-                    orderAdapter.setOrders(orders);
-                    orderAdapter.notifyDataSetChanged();
+                    ordersAdapter.setOrders(orders);
+                    ordersAdapter.notifyDataSetChanged();
                }
           });
 
@@ -64,7 +64,7 @@ public class OrdersFragment extends Fragment
                @Override
                public void onClick(View view, int position)
                {
-                    long orderId = ((OrderAdapter)recyclerViewOrders.getAdapter()).getOrderId(position);
+                    long orderId = ((OrdersAdapter)recyclerViewOrders.getAdapter()).getOrderId(position);
                     navigateToSingleOrder(orderId);
                }
 
@@ -78,10 +78,8 @@ public class OrdersFragment extends Fragment
 
      private void navigateToSingleOrder(long orderId)
      {
-          Bundle bundle = new Bundle();
-          bundle.putLong("orderId", orderId);
-          bundle.putString("title", String.valueOf(orderId));
-          NavHostFragment.findNavController(this).navigate(R.id.action_nav_orders_to_nav_single_order, bundle);
+          OrdersFragmentDirections.ActionNavOrdersToNavSingleOrder action = OrdersFragmentDirections.actionNavOrdersToNavSingleOrder(orderId, String.valueOf(orderId));
+          NavHostFragment.findNavController(this).navigate(action);
      }
 
      private void fabClicked(View view)

@@ -23,7 +23,24 @@
                 android:name="orderId"
                 app:argType="long" />
         <argument
-            android:name="title"
-            app:argType="string" />
+                android:name="title"
+                app:argType="string" />
+        <action
+                android:id="@+id/action_nav_single_order_to_nav_products"
+                app:destination="@id/nav_products" />
+    </fragment>
+    <fragment
+            android:id="@+id/nav_products"
+            android:name="me.antonjanto.mobilebutler.ui.products.ProductsFragment"
+            android:label="@string/products"
+            tools:layout="@layout/fragment_products" >
+        <argument
+                android:name="order"
+                app:argType="me.antonjanto.mobilebutler.model.Order" />
+        <action
+                android:id="@+id/action_nav_products_to_nav_single_order"
+                app:destination="@id/nav_single_order"
+                app:popUpTo="@id/nav_single_order"
+                app:popUpToInclusive="true" />
     </fragment>
 </navigation>

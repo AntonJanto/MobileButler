@@ -5,7 +5,7 @@
         android:layout_height="60dp"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:padding="@dimen/view_padding"
-        android:background="@drawable/tile_gray_top_border">
+        android:background="@drawable/tile_top_border_gray">
 
     <TextView
             android:id="@+id/single_order_item_name"

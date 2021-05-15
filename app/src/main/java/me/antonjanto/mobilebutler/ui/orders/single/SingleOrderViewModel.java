@@ -27,7 +27,17 @@ public class SingleOrderViewModel extends AndroidViewModel
      public SingleOrderViewModel(Application application)
      {
           super(application);
-          orderService = new OrderServiceImpl(OrderRepositoryImpl.getInstance());
+          orderService = new OrderServiceImpl();
+     }
+
+     public void init()
+     {
+
+     }
+
+     public void init(long orderId)
+     {
+          fetchOrder(orderId);
      }
 
      public void fetchOrder(long orderId)

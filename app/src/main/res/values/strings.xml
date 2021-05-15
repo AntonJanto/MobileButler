@@ -20,4 +20,5 @@
     <string name="not_closed">Not closed yet</string>
     <string name="single_order_items_none">No items were ordered</string>
     <string name="x_quantity">x</string>
+    <string name="products">Products</string>
 </resources>

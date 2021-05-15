@@ -1,4 +1,4 @@
-package me.antonjanto.mobilebutler.ui.orders.single;
+package me.antonjanto.mobilebutler.ui.adapters;
 
 import android.os.Bundle;
 
@@ -8,13 +8,17 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import org.jetbrains.annotations.NotNull;
 
+import me.antonjanto.mobilebutler.ui.orders.single.SingleOrderDetailsFragment;
+import me.antonjanto.mobilebutler.ui.orders.single.SingleOrderItemsFragment;
+
 public class SingleOrderPagerAdapter extends FragmentStateAdapter
 {
-     private long orderId;
+     private Bundle args;
 
      public SingleOrderPagerAdapter(Fragment fragment)
      {
           super(fragment);
+          args = fragment.getArguments();
      }
 
      @NonNull
@@ -23,8 +27,6 @@ public class SingleOrderPagerAdapter extends FragmentStateAdapter
      public Fragment createFragment(int position)
      {
           Fragment fragment;
-          Bundle args = new Bundle();
-          args.putLong("orderId", orderId);
           switch (position) {
                case 1:
                     fragment = new SingleOrderDetailsFragment();
@@ -44,8 +46,4 @@ public class SingleOrderPagerAdapter extends FragmentStateAdapter
           return 2;
      }
 
-     public void setOrderId(long orderId)
-     {
-          this.orderId = orderId;
-     }
 }

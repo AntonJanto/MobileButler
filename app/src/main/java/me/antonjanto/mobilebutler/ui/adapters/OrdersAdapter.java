@@ -13,7 +13,7 @@ import java.util.List;
 import me.antonjanto.mobilebutler.R;
 import me.antonjanto.mobilebutler.model.Order;
 
-public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>
+public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder>
 {
      private List<Order> orders;
 
@@ -32,7 +32,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>
 
      @NonNull
      @Override
-     public OrderAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
      {
           LayoutInflater inflater = LayoutInflater.from(parent.getContext());
           View view = inflater.inflate(R.layout.list_item_order, parent, false);
@@ -40,7 +40,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>
      }
 
      @Override
-     public void onBindViewHolder(@NonNull OrderAdapter.ViewHolder holder, int position)
+     public void onBindViewHolder(@NonNull OrdersAdapter.ViewHolder holder, int position)
      {
           holder.orderId.setText(String.valueOf(orders.get(position).getOrderId()));
           holder.orderPrice.setText(String.valueOf(orders.get(position).getTotalPrice()));

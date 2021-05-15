@@ -4,8 +4,10 @@ import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 
+import java.io.Serializable;
+
 @Entity(tableName = "orderItem", primaryKeys = {"orderId", "productId"})
-public class OrderItem
+public class OrderItem implements Serializable
 {
      @Embedded
      private Product product;
@@ -57,13 +59,15 @@ public class OrderItem
 
      public Product getProduct()
      {
+          product.setProductId(productId);
           return product;
      }
 
      public void setProduct(Product product)
      {
           this.product = product;
-          setProductId(product.getProductId());
+          if (productId == 0)
+               setProductId(product.getProductId());
      }
 
      public double getPrice()

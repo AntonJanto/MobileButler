@@ -12,6 +12,7 @@ import java.util.ListIterator;
 import java.util.stream.Collectors;
 
 import me.antonjanto.mobilebutler.model.Order;
+import me.antonjanto.mobilebutler.model.OrderItem;
 import me.antonjanto.mobilebutler.model.OrderWithOrderItemsEntity;
 import me.antonjanto.mobilebutler.repository.sqlite.MobileButlerDatabase;
 import me.antonjanto.mobilebutler.repository.sqlite.OrderDao;
@@ -89,6 +90,13 @@ public class OrderRepositoryImpl implements OrderRepository
           return mapOrder(orderDao.getOrder(orderId));
      }
 
+     @Override
+     public void updateOrder(Order order)
+     {
+          new InsertOrderItemsAsync(orderDao).execute(order.getItems());
+          new UpdateOrderAsync(orderDao).execute(order);
+     }
+
      private static class InsertOrderAsync extends AsyncTask<Order, Void, Void>
      {
           private OrderDao orderDao;
@@ -102,6 +110,57 @@ public class OrderRepositoryImpl implements OrderRepository
           protected Void doInBackground(Order... orders)
           {
                orderDao.insertOrder(orders[0]);
+               return null;
+          }
+     }
+
+     private static class UpdateOrderAsync extends AsyncTask<Order, Void, Void>
+     {
+          private OrderDao orderDao;
+
+          private UpdateOrderAsync(OrderDao orderDao)
+          {
+               this.orderDao = orderDao;
+          }
+
+          @Override
+          protected Void doInBackground(Order... orders)
+          {
+               orderDao.updateOrder(orders[0]);
+               return null;
+          }
+     }
+
+     private static class UpdateOrderItemsAsync extends AsyncTask<List<OrderItem>, Void, Void>
+     {
+          private OrderDao orderDao;
+
+          private UpdateOrderItemsAsync(OrderDao orderDao)
+          {
+               this.orderDao = orderDao;
+          }
+
+          @Override
+          protected Void doInBackground(List<OrderItem>... lists)
+          {
+               orderDao.updateOrderItems(lists[0]);
+               return null;
+          }
+     }
+
+     private static class InsertOrderItemsAsync extends AsyncTask<List<OrderItem>, Void, Void>
+     {
+          private OrderDao orderDao;
+
+          private InsertOrderItemsAsync(OrderDao orderDao)
+          {
+               this.orderDao = orderDao;
+          }
+
+          @Override
+          protected Void doInBackground(List<OrderItem>... lists)
+          {
+               orderDao.insertOrderItems(lists[0]);
                return null;
           }
      }

@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavDirections;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,6 +27,7 @@ import ir.beigirad.zigzagview.ZigzagView;
 import me.antonjanto.mobilebutler.R;
 import me.antonjanto.mobilebutler.model.OrderItem;
 import me.antonjanto.mobilebutler.ui.adapters.OrderItemAdapter;
+import me.antonjanto.mobilebutler.ui.orders.many.OrdersFragmentDirections;
 
 public class SingleOrderItemsFragment extends Fragment
 {
@@ -34,12 +36,15 @@ public class SingleOrderItemsFragment extends Fragment
      private TextView noOrderItemsTextView;
      private ZigzagView zigzagView;
      private FloatingActionButton fab;
+     private NavDirections navDirections;
 
      public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
           Bundle savedInstanceState)
      {
+          long orderId = SingleOrderFragmentArgs.fromBundle(getArguments()).getOrderId();
           super.onCreate(savedInstanceState);
           mViewModel = new ViewModelProvider(this).get(SingleOrderViewModel.class);
+          mViewModel.init(orderId);
           View root = inflater.inflate(R.layout.fragment_single_order_items, container, false);
           findViews(root);
           return root;
@@ -55,24 +60,21 @@ public class SingleOrderItemsFragment extends Fragment
           recyclerView.setAdapter(orderItemAdapter);
           recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-          long orderId;
-          if (getArguments() != null) {
-               orderId = getArguments().getLong("orderId");
-               mViewModel.fetchOrder(orderId);
-               mViewModel.getOrder().observe(getViewLifecycleOwner(), (o) -> {
-                    List<OrderItem> orderItems = o.getItems();
-                    if (orderItems == null || orderItems.isEmpty()) {
-                         recyclerView.setVisibility(View.INVISIBLE);
-                         noOrderItemsTextView.setVisibility(View.VISIBLE);
-                    }
-                    else {
-                         recyclerView.setVisibility(View.VISIBLE);
-                         noOrderItemsTextView.setVisibility(View.INVISIBLE);
-                         orderItemAdapter.setOrderItems(orderItems);
-                         orderItemAdapter.notifyDataSetChanged();
-                    }
-               });
-          }
+          mViewModel.getOrder().observe(getViewLifecycleOwner(), (o) -> {
+               navDirections = SingleOrderFragmentDirections
+                    .actionNavSingleOrderToNavProducts(o);
+               List<OrderItem> orderItems = o.getItems();
+               if (orderItems == null || orderItems.isEmpty()) {
+                    recyclerView.setVisibility(View.INVISIBLE);
+                    noOrderItemsTextView.setVisibility(View.VISIBLE);
+               }
+               else {
+                    recyclerView.setVisibility(View.VISIBLE);
+                    noOrderItemsTextView.setVisibility(View.INVISIBLE);
+                    orderItemAdapter.setOrderItems(orderItems);
+                    orderItemAdapter.notifyDataSetChanged();
+               }
+          });
      }
 
      private void findViews(View view)
@@ -86,6 +88,6 @@ public class SingleOrderItemsFragment extends Fragment
      private void fabPressed(View view)
      {
           Toast.makeText(getContext(), "Add Item", Toast.LENGTH_LONG).show();
-          NavHostFragment.findNavController(this).navigate(R.id.action_nav_single_order_to_nav_products);
+          NavHostFragment.findNavController(this).navigate(navDirections);
      }
 }

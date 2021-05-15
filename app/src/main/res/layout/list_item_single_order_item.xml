@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/single_order_item_name"
-            android:layout_marginStart="10dp" />
+            android:layout_marginStart="@dimen/text_margin" />
     <TextView
             android:id="@+id/single_order_item_quantity"
             android:layout_width="wrap_content"

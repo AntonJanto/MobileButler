@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "150007654151",
+    "firebase_url": "https://mobile-butler-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "mobile-butler",
     "storage_bucket": "mobile-butler.appspot.com"
   },

@@ -13,6 +13,7 @@ import java.util.List;
 
 import me.antonjanto.mobilebutler.R;
 import me.antonjanto.mobilebutler.model.OrderItem;
+import me.antonjanto.mobilebutler.ui.Converter;
 
 public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.ViewHolder>
 {
@@ -37,9 +38,8 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.View
      {
           OrderItem orderItem = orderItems.get(position);
           holder.orderItemNameTextView.setText(orderItem.getProductName());
-          String orderQuantity = stringValueBasedOnDecimal(orderItem.getQuantity());
-          holder.orderItemQuantityView.setText(orderQuantity);
-          holder.orderItemPriceView.setText(String.valueOf(orderItem.getPrice()));
+          holder.orderItemQuantityView.setText(Converter.toDecimal(orderItem.getQuantity()));
+          holder.orderItemPriceView.setText(Converter.toDecimal(orderItem.getPrice()));
      }
 
      private String stringValueBasedOnDecimal(double quantity)

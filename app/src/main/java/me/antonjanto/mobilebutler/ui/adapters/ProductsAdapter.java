@@ -14,6 +14,7 @@ import java.util.List;
 
 import me.antonjanto.mobilebutler.R;
 import me.antonjanto.mobilebutler.model.Product;
+import me.antonjanto.mobilebutler.ui.Converter;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHolder>
 {
@@ -39,8 +40,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
      {
           Product product = products.get(position);
           holder.productNameTextView.setText(product.getName());
-          holder.productPriceTextView.setText(String.valueOf(product.getUnitPrice()));
-          holder.productIdTextView.setText(String.valueOf(product.getProductId()));
+          holder.productPriceTextView.setText(Converter.toDecimal(product.getUnitPrice()));
+          holder.productIdTextView.setText(Converter.toInteger(product.getProductId()));
      }
 
      @Override

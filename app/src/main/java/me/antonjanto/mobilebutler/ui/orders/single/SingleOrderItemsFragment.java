@@ -24,6 +24,7 @@ import ir.beigirad.zigzagview.ZigzagView;
 import me.antonjanto.mobilebutler.R;
 import me.antonjanto.mobilebutler.model.Order;
 import me.antonjanto.mobilebutler.model.OrderItem;
+import me.antonjanto.mobilebutler.ui.Converter;
 import me.antonjanto.mobilebutler.ui.adapters.OrderItemAdapter;
 
 public class SingleOrderItemsFragment extends Fragment
@@ -88,7 +89,7 @@ public class SingleOrderItemsFragment extends Fragment
                navDirections = SingleOrderFragmentDirections
                     .actionNavSingleOrderToNavProducts(o);
 
-               totalPriceTextView.setText(String.valueOf(o.getTotalPrice()));
+               totalPriceTextView.setText(Converter.toDecimal(o.getTotalPrice()));
 
                List<OrderItem> orderItems = o.getItems();
 

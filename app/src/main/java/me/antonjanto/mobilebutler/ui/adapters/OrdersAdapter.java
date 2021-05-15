@@ -12,6 +12,7 @@ import java.util.List;
 
 import me.antonjanto.mobilebutler.R;
 import me.antonjanto.mobilebutler.model.Order;
+import me.antonjanto.mobilebutler.ui.Converter;
 
 public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder>
 {
@@ -42,8 +43,9 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder
      @Override
      public void onBindViewHolder(@NonNull OrdersAdapter.ViewHolder holder, int position)
      {
-          holder.orderId.setText(String.valueOf(orders.get(position).getOrderId()));
-          holder.orderPrice.setText(String.valueOf(orders.get(position).getTotalPrice()));
+          Order order = orders.get(position);
+          holder.orderId.setText(Converter.toInteger(order.getOrderId()));
+          holder.orderPrice.setText(Converter.toDecimal(order.getTotalPrice()));
      }
 
      @Override

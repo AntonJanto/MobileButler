@@ -25,4 +25,8 @@
     <string name="quantity">Quantity</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="order_close">Close order</string>
+    <string name="order_split">Split order</string>
+    <string name="order_close_confirmation_text">Close the order and print the receipt.</string>
+    <string name="confirm">Confirm</string>
 </resources>

@@ -8,9 +8,9 @@ import me.antonjanto.mobilebutler.model.Order;
 
 public interface OrderRepository
 {
-     LiveData<List<Order>> getAllOrders();
      LiveData<List<Order>> getOpenOrders();
      void insertNewOrder(Order order);
      LiveData<Order> getOrder(long orderId);
      void updateOrder(Order order);
+     void closeOrder(Order order);
 }

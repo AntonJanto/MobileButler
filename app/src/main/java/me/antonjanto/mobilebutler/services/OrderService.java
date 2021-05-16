@@ -13,4 +13,5 @@ public interface OrderService
      LiveData<List<Order>> getOpenOrders();
      LiveData<Order> getOrder(long orderId);
      void addProductToOrder(Order order, Product product, double quantity);
+     void closeOrder(Order order);
 }

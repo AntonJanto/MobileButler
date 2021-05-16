@@ -27,16 +27,11 @@ public class SingleOrderViewModel extends AndroidViewModel
      public SingleOrderViewModel(Application application)
      {
           super(application);
-          orderService = new OrderServiceImpl();
-     }
-
-     public void init()
-     {
-
      }
 
      public void init(long orderId)
      {
+          orderService = new OrderServiceImpl();
           fetchOrder(orderId);
      }
 
@@ -53,5 +48,10 @@ public class SingleOrderViewModel extends AndroidViewModel
      public void createOrder()
      {
           orderService.openOrder(null);
+     }
+
+     public void closeOrder()
+     {
+          orderService.closeOrder(order.getValue());
      }
 }

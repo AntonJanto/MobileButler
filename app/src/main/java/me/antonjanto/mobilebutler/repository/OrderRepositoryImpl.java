@@ -23,7 +23,6 @@ public class OrderRepositoryImpl implements OrderRepository
 
      private final OrderDao orderDao;
 
-     private final LiveData<List<Order>> allOrders;
      private final LiveData<List<Order>> openedOrders;
 
      private OrderRepositoryImpl(Application application)
@@ -32,7 +31,6 @@ public class OrderRepositoryImpl implements OrderRepository
                .getInstance(application.getApplicationContext())
                .orderDao();
           openedOrders = mapOrders(orderDao.getOpenedOrders());
-          allOrders = mapOrders(orderDao.getAllOrders());
      }
 
      public static OrderRepository getInstance(Application application)
@@ -67,12 +65,6 @@ public class OrderRepositoryImpl implements OrderRepository
      }
 
      @Override
-     public LiveData<List<Order>> getAllOrders()
-     {
-          return allOrders;
-     }
-
-     @Override
      public LiveData<List<Order>> getOpenOrders()
      {
           return openedOrders;
@@ -94,6 +86,12 @@ public class OrderRepositoryImpl implements OrderRepository
      public void updateOrder(Order order)
      {
           new InsertOrderItemsAsync(orderDao).execute(order.getItems());
+          new UpdateOrderAsync(orderDao).execute(order);
+     }
+
+     @Override
+     public void closeOrder(Order order)
+     {
           new UpdateOrderAsync(orderDao).execute(order);
      }
 

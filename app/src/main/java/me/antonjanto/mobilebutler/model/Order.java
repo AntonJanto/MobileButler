@@ -119,4 +119,10 @@ public class Order implements Serializable
                items.add(orderItem);
           calculateTotalPrice();
      }
+
+     public void close()
+     {
+          closed = true;
+          closedTime = LocalDateTime.now();
+     }
 }

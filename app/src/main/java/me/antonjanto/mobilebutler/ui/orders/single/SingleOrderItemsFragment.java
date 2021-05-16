@@ -2,6 +2,9 @@ package me.antonjanto.mobilebutler.ui.orders.single;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -17,6 +20,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -48,6 +53,7 @@ public class SingleOrderItemsFragment extends Fragment
           mViewModel = new ViewModelProvider(this).get(SingleOrderViewModel.class);
           mViewModel.init(orderId);
           View root = inflater.inflate(R.layout.fragment_single_order_items, container, false);
+          setHasOptionsMenu(true);
           findViews(root);
           return root;
      }
@@ -65,6 +71,31 @@ public class SingleOrderItemsFragment extends Fragment
           mViewModel.getOrder().observe(getViewLifecycleOwner(), new OrderObserverImpl());
      }
 
+     @Override
+     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater)
+     {
+          inflater.inflate(R.menu.options_single_order, menu);
+          super.onCreateOptionsMenu(menu, inflater);
+     }
+
+     @Override
+     public void onPrepareOptionsMenu(@NonNull @NotNull Menu menu)
+     {
+          menu.removeItem(R.id.menu_settings);
+          super.onPrepareOptionsMenu(menu);
+     }
+
+     @Override
+     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item)
+     {
+          if (item.getItemId() == R.id.menu_order_close) {
+               long orderId = mViewModel.getOrder().getValue().getOrderId();
+               SingleOrderFragmentDirections.ActionNavSingleOrderToSingleOrderClosedFragment action
+                    = SingleOrderFragmentDirections.actionNavSingleOrderToSingleOrderClosedFragment(orderId, Converter.toInteger(orderId));
+               NavHostFragment.findNavController(this).navigate(action);
+          }
+          return super.onOptionsItemSelected(item);
+     }
 
      private void findViews(View view)
      {
@@ -77,7 +108,6 @@ public class SingleOrderItemsFragment extends Fragment
 
      private void fabPressed(View view)
      {
-          Toast.makeText(getContext(), "Add Item", Toast.LENGTH_LONG).show();
           NavHostFragment.findNavController(this).navigate(navDirections);
      }
 
@@ -86,8 +116,7 @@ public class SingleOrderItemsFragment extends Fragment
           @Override
           public void onChanged(Order o)
           {
-               navDirections = SingleOrderFragmentDirections
-                    .actionNavSingleOrderToNavProducts(o);
+               navDirections = SingleOrderFragmentDirections.actionNavSingleOrderToNavProducts(o);
 
                totalPriceTextView.setText(Converter.toDecimal(o.getTotalPrice()));
 
@@ -105,4 +134,5 @@ public class SingleOrderItemsFragment extends Fragment
                }
           }
      }
+
 }

@@ -42,7 +42,7 @@ public class SingleOrderDetailsFragment extends Fragment
           long orderId;
           if (getArguments() != null) {
                orderId = getArguments().getLong("orderId");
-               mViewModel.fetchOrder(orderId);
+               mViewModel.init(orderId);
                mViewModel.getOrder().observe(getViewLifecycleOwner(), (o) -> {
                     orderIdEditText.setText(String.valueOf(o.getOrderId()));
                     tableNumberEditText.setText(String.valueOf(o.getTableId()));

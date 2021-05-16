@@ -37,6 +37,13 @@ public class OrderServiceImpl implements OrderService
      }
 
      @Override
+     public void closeOrder(Order order)
+     {
+          order.close();
+          orderRepository.closeOrder(order);
+     }
+
+     @Override
      public LiveData<List<Order>> getOpenOrders()
      {
           return orderRepository.getOpenOrders();

@@ -34,9 +34,9 @@ public class OrdersFragment extends Fragment
           View root = inflater.inflate(R.layout.fragment_orders, container, false);
 
           fab = root.findViewById(R.id.fab);
-          fab.setOnClickListener((view) -> fabClicked(view));
+          fab.setOnClickListener(this::fabClicked);
           recyclerViewOrders = root.findViewById(R.id.recyclerView_orders);
-
+          setHasOptionsMenu(true);
           setupRecyclerView(root);
           return root;
      }
@@ -48,14 +48,9 @@ public class OrdersFragment extends Fragment
           OrdersAdapter ordersAdapter = new OrdersAdapter();
           recyclerViewOrders.setAdapter(ordersAdapter);
           ordersAdapter.setOrders(ordersViewModel.getOrders().getValue());
-          ordersViewModel.getOrders().observe(getViewLifecycleOwner(), new Observer<List<Order>>()
-          {
-               @Override
-               public void onChanged(List<Order> orders)
-               {
-                    ordersAdapter.setOrders(orders);
-                    ordersAdapter.notifyDataSetChanged();
-               }
+          ordersViewModel.getOrders().observe(getViewLifecycleOwner(), orders -> {
+               ordersAdapter.setOrders(orders);
+               ordersAdapter.notifyDataSetChanged();
           });
 
           recyclerViewOrders.addOnItemTouchListener(new RecyclerTouchListener(getContext(),

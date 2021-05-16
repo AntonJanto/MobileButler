@@ -19,7 +19,7 @@
         <item name="windowNoTitle">true</item>
     </style>
     <style name="Theme.MobileButler.AppBarOverlay"
-            parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+            parent="ThemeOverlay.AppCompat.Light" />
     <style name="Theme.RecycledScrollWithNavigation.PopupOverlay"
             parent="ThemeOverlay.AppCompat.Light" />
 </resources>

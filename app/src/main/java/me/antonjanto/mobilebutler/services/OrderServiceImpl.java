@@ -31,6 +31,8 @@ public class OrderServiceImpl implements OrderService
      @Override
      public void addProductToOrder(Order order, Product product, double quantity)
      {
+          if (product == null)
+               return;
           OrderItem orderItem = new OrderItem(order.getOrderId(), product, quantity);
           order.addItem(orderItem);
           orderRepository.updateOrder(order);

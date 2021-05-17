@@ -29,4 +29,6 @@
     <string name="order_split">Split order</string>
     <string name="order_close_confirmation_text">Close the order and print the receipt.</string>
     <string name="confirm">Confirm</string>
+    <string name="search">Search</string>
+    <string name="search_products">name, number</string>
 </resources>

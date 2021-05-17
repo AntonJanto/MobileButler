@@ -45,9 +45,13 @@ public class ProductsViewModel extends AndroidViewModel
           return order;
      }
 
-     public void addProductToOrder(int position, double quantity)
+     public void addProductToOrder(long productId, double quantity)
      {
-          Product product = products.getValue().get(position);
+          Product product = products.getValue()
+               .stream()
+               .filter(p-> p.getProductId() == productId)
+               .findFirst()
+               .orElse(null);
           orderService.addProductToOrder(order.getValue(), product, quantity);
      }
 }

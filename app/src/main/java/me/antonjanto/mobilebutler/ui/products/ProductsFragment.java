@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -78,24 +79,13 @@ public class ProductsFragment extends Fragment
      {
           inflater.inflate(R.menu.options_products, menu);
 
-          SearchManager searchManager = (SearchManager) getContext().getSystemService(Context.SEARCH_SERVICE);
-          SearchView searchView = (SearchView) menu.findItem(R.id.menu_products_search).getActionView();
-          searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
-          searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener()
-          {
-               @Override
-               public boolean onQueryTextSubmit(String query)
-               {
-                    return false;
-               }
-
-               @Override
-               public boolean onQueryTextChange(String newText)
-               {
-                    productsAdapter.getFilter().filter(newText);
-                    return true;
-               }
-          });
+          SearchManager searchManager = (SearchManager) getContext()
+               .getSystemService(Context.SEARCH_SERVICE);
+          SearchView searchView = (SearchView) menu.findItem(R.id.menu_products_search)
+               .getActionView();
+          searchView.setSearchableInfo(
+               searchManager.getSearchableInfo(getActivity().getComponentName()));
+          searchView.setOnQueryTextListener(new ProductsSearchOnQueryListener());
 
           super.onCreateOptionsMenu(menu, inflater);
      }
@@ -138,6 +128,22 @@ public class ProductsFragment extends Fragment
                     navigateBack();
                });
                dialog.show(requireActivity().getSupportFragmentManager(), "QuantityDialogFragment");
+          }
+     }
+
+     private class ProductsSearchOnQueryListener implements SearchView.OnQueryTextListener
+     {
+          @Override
+          public boolean onQueryTextSubmit(String query)
+          {
+               return false;
+          }
+
+          @Override
+          public boolean onQueryTextChange(String newText)
+          {
+               productsAdapter.getFilter().filter(newText);
+               return true;
           }
      }
 }

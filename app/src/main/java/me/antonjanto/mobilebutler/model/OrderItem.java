@@ -5,6 +5,8 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 @Entity(tableName = "orderItem", primaryKeys = {"orderId", "productId"})
 public class OrderItem implements Serializable
@@ -83,5 +85,13 @@ public class OrderItem implements Serializable
      public String getProductName()
      {
           return product.getName();
+     }
+
+     public Map<String, Object> toMap()
+     {
+          HashMap<String, Object> result = new HashMap<>();
+          result.put("productId", productId);
+          result.put("quantity", quantity);
+          return result;
      }
 }

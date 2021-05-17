@@ -8,7 +8,9 @@ import androidx.room.TypeConverters;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import me.antonjanto.mobilebutler.repository.sqlite.converters.DateConverter;
 
@@ -124,5 +126,16 @@ public class Order implements Serializable
      {
           closed = true;
           closedTime = LocalDateTime.now();
+     }
+
+     public Map<String, Object> toMap()
+     {
+
+          HashMap<String, Object> result = new HashMap<>();
+          result.put("orderId", orderId);
+          result.put("totalPrice", totalPrice);
+          result.put("closed", closed);
+          result.put("closedTime", closedTime.toString());
+          return result;
      }
 }

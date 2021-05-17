@@ -5,7 +5,7 @@ Mobile Butler is an adroid app which allows restaurant, café, bar or similar es
 #
 
 ## Requirements
-This list of requirements is only something to get started with. It hopefully includes most of the significant requirements. I will try to keep this list updated as the project progresses.
+This list of requirements is organized based on the MoSCoW prinicple.
 
 ### Functional
  - As an employee I want to be able to have an overview of all orders.
@@ -21,5 +21,6 @@ This list of requirements is only something to get started with. It hopefully in
 ### Non-functional
  - Every order includes the time it was closed
  - Every order includes the total sum
- - Every product includes its price, product name, and product number
- - Products are loaded from the central database api
+ - Every closed order is stored in the central database
+ - Every product includes its price, product name, product number, and unit
+ - Products are loaded from the central database

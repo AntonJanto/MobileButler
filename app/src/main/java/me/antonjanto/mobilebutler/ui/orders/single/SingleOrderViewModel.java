@@ -54,4 +54,10 @@ public class SingleOrderViewModel extends AndroidViewModel
      {
           orderService.closeOrder(order.getValue());
      }
+
+     public void cancelOrder()
+     {
+          long orderId = order.getValue().getOrderId();
+          orderService.cancelOrder(orderId);
+     }
 }

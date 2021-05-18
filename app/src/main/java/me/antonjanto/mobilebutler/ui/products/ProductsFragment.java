@@ -62,7 +62,7 @@ public class ProductsFragment extends Fragment
           super.onViewCreated(view, savedInstanceState);
           productsAdapter = new ProductsAdapter();
           productsRecyclerView.setAdapter(productsAdapter);
-          productsRecyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 2));
+          productsRecyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 3));
 
           productsViewModel.getProducts().observe(getViewLifecycleOwner(), ps -> {
                productsAdapter.setProducts(ps);

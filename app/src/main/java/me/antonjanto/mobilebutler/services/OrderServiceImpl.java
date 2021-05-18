@@ -46,6 +46,12 @@ public class OrderServiceImpl implements OrderService
      }
 
      @Override
+     public void cancelOrder(long orderId)
+     {
+          orderRepository.deleteOrder(orderId);
+     }
+
+     @Override
      public LiveData<List<Order>> getOpenOrders()
      {
           return orderRepository.getOpenOrders();

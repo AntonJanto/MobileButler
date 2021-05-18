@@ -13,4 +13,5 @@ public interface OrderRepository
      LiveData<Order> getOrder(long orderId);
      void updateOrder(Order order);
      void closeOrder(Order order);
+     void deleteOrder(long orderId);
 }

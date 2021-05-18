@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -93,6 +92,12 @@ public class SingleOrderItemsFragment extends Fragment
                SingleOrderFragmentDirections.ActionNavSingleOrderToSingleOrderClosedFragment action
                     = SingleOrderFragmentDirections.actionNavSingleOrderToSingleOrderClosedFragment(orderId, Converter.toInteger(orderId));
                NavHostFragment.findNavController(this).navigate(action);
+          }
+          else if (item.getItemId() == R.id.menu_order_cancel)
+          {
+               long orderId = mViewModel.getOrder().getValue().getOrderId();
+               mViewModel.cancelOrder();
+               NavHostFragment.findNavController(this).navigateUp();
           }
           return super.onOptionsItemSelected(item);
      }

@@ -43,4 +43,10 @@ public interface OrderDao
      @Transaction
      @Query("SELECT * FROM `order`")
      LiveData<List<OrderWithOrderItemsEntity>> getAllOrders();
+
+     @Query("DELETE FROM `order` WHERE orderId = :orderId")
+     void deleteOrderItems(Long orderId);
+
+     @Query("DELETE FROM orderItem WHERE orderId = :orderId")
+     void deleteOrder(Long orderId);
 }

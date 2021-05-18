@@ -100,6 +100,12 @@ public class OrderRepositoryImpl implements OrderRepository
           saveClosedOrderInFirebase(order);
      }
 
+     @Override
+     public void deleteOrder(long orderId)
+     {
+          new DeleterOrderAsync(orderDao).execute(orderId);
+     }
+
      private void saveClosedOrderInFirebase(Order order)
      {
           String orderId = Converter.toInteger(order.getOrderId());
@@ -174,6 +180,24 @@ public class OrderRepositoryImpl implements OrderRepository
           protected Void doInBackground(List<OrderItem>... lists)
           {
                orderDao.insertOrderItems(lists[0]);
+               return null;
+          }
+     }
+
+     private static class DeleterOrderAsync extends AsyncTask<Long, Void, Void>
+     {
+          private OrderDao orderDao;
+
+          public DeleterOrderAsync(OrderDao orderDao)
+          {
+               this.orderDao = orderDao;
+          }
+
+          @Override
+          protected Void doInBackground(Long... longs)
+          {
+               orderDao.deleteOrder(longs[0]);
+               orderDao.deleteOrderItems(longs[0]);
                return null;
           }
      }

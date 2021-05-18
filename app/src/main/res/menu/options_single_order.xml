@@ -7,7 +7,7 @@
             android:title="@string/order_close"
             app:showAsAction="never" />
     <item
-            android:id="@+id/menu_order_split"
-            android:title="@string/order_split"
+            android:id="@+id/menu_order_cancel"
+            android:title="@string/order_cancel"
             app:showAsAction="never" />
 </menu>

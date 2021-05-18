@@ -2,4 +2,9 @@
     <style name="Title">
         <item name="android:textSize">25sp</item>
     </style>
+    <style name="FadedTitle">
+        <item name="android:textSize">30sp</item>
+        <item name="android:fontFamily">@font/basic</item>
+        <item name="android:textColor">@color/faded_gray</item>
+    </style>
 </resources>

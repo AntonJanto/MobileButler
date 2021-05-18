@@ -13,4 +13,10 @@
             android:icon="@drawable/ic_menu_table"
             android:title="@string/tables" />
     </group>
+    <group android:checkableBehavior="single">
+        <item
+                android:id="@+id/nav_signout"
+                android:icon="@drawable/ic_signout"
+                android:title="@string/signout"/>
+    </group>
 </menu>

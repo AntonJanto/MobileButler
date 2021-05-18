@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,10 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.List;
 
 import me.antonjanto.mobilebutler.R;
-import me.antonjanto.mobilebutler.model.Order;
 import me.antonjanto.mobilebutler.ui.adapters.OrdersAdapter;
 import me.antonjanto.mobilebutler.ui.adapters.RecyclerTouchListener;
 

@@ -43,9 +43,14 @@ public class MainActivity extends AppCompatActivity
           navController.addOnDestinationChangedListener((controller, destination, arguments) ->
           {
                if (destination.getId() == R.id.nav_signin)
+               {
                     toolbar.setVisibility(View.GONE);
-               else
+                    drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+               }
+               else {
                     toolbar.setVisibility(View.VISIBLE);
+                    drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+               }
           });
           NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
           NavigationUI.setupWithNavController(navigationView, navController);

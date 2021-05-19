@@ -55,6 +55,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
           holder.productNameTextView.setText(product.getName());
           holder.productPriceTextView.setText(Converter.toDecimal(product.getUnitPrice()));
           holder.productIdTextView.setText(Converter.toInteger(product.getProductId()));
+          String unit = "/" + product.getUnit();
+          holder.productUnitTextView.setText(unit);
      }
 
      @Override
@@ -82,6 +84,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
           TextView productNameTextView;
           TextView productPriceTextView;
           TextView productIdTextView;
+          TextView productUnitTextView;
 
           public ViewHolder(View itemView)
           {
@@ -89,6 +92,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
                productIdTextView = itemView.findViewById(R.id.product_id);
                productNameTextView = itemView.findViewById(R.id.product_name);
                productPriceTextView = itemView.findViewById(R.id.product_price);
+               productUnitTextView = itemView.findViewById(R.id.product_unit);
           }
      }
 

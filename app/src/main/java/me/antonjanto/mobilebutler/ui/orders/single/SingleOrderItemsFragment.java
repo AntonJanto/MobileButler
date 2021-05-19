@@ -47,8 +47,8 @@ public class SingleOrderItemsFragment extends Fragment
      public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
           Bundle savedInstanceState)
      {
-          long orderId = SingleOrderFragmentArgs.fromBundle(getArguments()).getOrderId();
           super.onCreate(savedInstanceState);
+          long orderId = SingleOrderFragmentArgs.fromBundle(getArguments()).getOrderId();
           mViewModel = new ViewModelProvider(this).get(SingleOrderViewModel.class);
           mViewModel.init(orderId);
           View root = inflater.inflate(R.layout.fragment_single_order_items, container, false);
@@ -95,7 +95,6 @@ public class SingleOrderItemsFragment extends Fragment
           }
           else if (item.getItemId() == R.id.menu_order_cancel)
           {
-               long orderId = mViewModel.getOrder().getValue().getOrderId();
                mViewModel.cancelOrder();
                NavHostFragment.findNavController(this).navigateUp();
           }

@@ -109,12 +109,17 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
                     Product product = productList.get(i);
                     try {
                          long queryAsId = Long.parseLong(filterString);
-                         if (product.getName().toLowerCase().contains(filterString) || product.getProductId() == queryAsId) {
+                         if (product.getProductId() == queryAsId
+                              || product.getName().toLowerCase().contains(filterString)
+                              || product.getCategory().toLowerCase().contains(filterString)
+                              || product.getSubcategory().toLowerCase().contains(filterString)) {
                               filteredProductList.add(product);
                          }
                     }
                     catch (NumberFormatException e) {
-                         if (product.getName().toLowerCase().contains(filterString)) {
+                         if (product.getName().toLowerCase().contains(filterString)
+                              || product.getCategory().toLowerCase().contains(filterString)
+                              || product.getSubcategory().toLowerCase().contains(filterString)) {
                               filteredProductList.add(product);
                          }
                     }

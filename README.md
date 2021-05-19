@@ -11,19 +11,19 @@ pw:    123456
 This list of requirements is organized based on the MoSCoW prinicple.
 
 ### Functional
- - As an employee I want to be able to have an overview of all orders.
- - As an employee I want to be able to create a new order.
- - As an employee I want to be able to park (put on hold until payment) an order.
- - As an employee I want to be able to close an order.
- - As an employee I want to be able to unpark (reopen) an order.
- - As an employee I want to be able to add products to the order.
- - As an employee I want to be able to search through products based on the product name or product number
- - As an employee I want to be able to search through products based on their categories.
- - As an employee I want to be able to assign an order to a table
+ - [x] As an employee I want to be able to have an overview of all orders. 
+ - [x] As an employee I want to be able to create a new order.
+ - [x] As an employee I want to be able to park (put on hold until payment) an order.
+ - [x] As an employee I want to be able to close an order.
+ - [x] As an employee I want to be able to unpark (reopen) an order.
+ - [x] As an employee I want to be able to add products to the order.
+ - [x] As an employee I want to be able to search through products based on the product name or product number
+ - [x] As an employee I want to be able to search through products based on their categories.
+ - [ ] As an employee I want to be able to assign an order to a table
 
 ### Non-functional
- - Every order includes the time it was closed
- - Every order includes the total sum
- - Every closed order is stored in the central database
- - Every product includes its price, product name, product number, and unit
- - Products are loaded from the central database
+ - [x] Every order includes the time it was closed
+ - [x] Every order includes the total sum
+ - [x] Every closed order is stored in the central database
+ - [x] Every product includes its price, product name, product number, and unit
+ - [x] Products are loaded from the central database

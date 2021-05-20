@@ -2,6 +2,9 @@
 
 Mobile Butler is an adroid app which allows restaurant, café, bar or similar establishments employees to make orders for their customers using their smartphone, or similar android device. The app allows them to create orders, add products to the orders. When customers ask for a receipt the employee can close the order and send to central storage. Optionally, the employee can allocate tables to the orders in order to easily assign customers to orders.
 
+### Video demonstration
+YT link: https://youtu.be/qKGK6UI5D6k
+
 ### Test
 for testing purposes use these credential to login:
 email: test@antonjanto.me

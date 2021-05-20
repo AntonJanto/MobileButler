@@ -11,7 +11,7 @@ pw:    123456
 This list of requirements is organized based on the MoSCoW prinicple.
 
 ### Functional
- - [x] As an employee I want to be able to have an overview of all orders. 
+ - [x] As an employee I want to be able to have an overview of all (parked) opened orders. 
  - [x] As an employee I want to be able to create a new order.
  - [x] As an employee I want to be able to park (put on hold until payment) an order.
  - [x] As an employee I want to be able to close an order.

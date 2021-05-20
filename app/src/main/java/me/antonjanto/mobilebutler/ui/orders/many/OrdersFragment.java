@@ -54,14 +54,14 @@ public class OrdersFragment extends Fragment
                recyclerViewOrders, new RecyclerTouchListener.ClickListener()
           {
                @Override
-               public void onClick(View view, int position)
+               public void onClick(int position)
                {
                     long orderId = ((OrdersAdapter)recyclerViewOrders.getAdapter()).getOrderId(position);
                     navigateToSingleOrder(orderId);
                }
 
                @Override
-               public void onLongClick(View view, int position)
+               public void onLongClick(int position)
                {
 
                }

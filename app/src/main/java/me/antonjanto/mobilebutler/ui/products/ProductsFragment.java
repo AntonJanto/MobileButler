@@ -111,7 +111,7 @@ public class ProductsFragment extends Fragment
      private class ProductsRecyclerTouchListener implements RecyclerTouchListener.ClickListener
      {
           @Override
-          public void onClick(View view, int position)
+          public void onClick(int position)
           {
                long productId = productsAdapter.getItemId(position);
                productsViewModel.addProductToOrder(productId, 1);
@@ -119,7 +119,7 @@ public class ProductsFragment extends Fragment
           }
 
           @Override
-          public void onLongClick(View view, int position)
+          public void onLongClick(int position)
           {
                long productId = productsAdapter.getItemId(position);
                QuantityDialogFragment dialog = new QuantityDialogFragment();

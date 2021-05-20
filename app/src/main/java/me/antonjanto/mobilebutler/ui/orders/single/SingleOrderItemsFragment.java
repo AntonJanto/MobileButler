@@ -37,7 +37,6 @@ public class SingleOrderItemsFragment extends Fragment
 
      private RecyclerView recyclerView;
      private TextView noOrderItemsTextView;
-     private ZigzagView zigzagView;
      private FloatingActionButton fab;
      private TextView totalPriceTextView;
 
@@ -106,7 +105,6 @@ public class SingleOrderItemsFragment extends Fragment
           fab = view.findViewById(R.id.single_order_items_fab);
           recyclerView = view.findViewById(R.id.single_order_items_recycler_view);
           noOrderItemsTextView = view.findViewById(R.id.single_order_items_none);
-          zigzagView = view.findViewById(R.id.single_order_item_zigzag);
           totalPriceTextView = view.findViewById(R.id.single_order_items_total_price);
      }
 

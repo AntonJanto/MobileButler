@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 import androidx.navigation.fragment.NavHostFragment;
 
-import org.jetbrains.annotations.NotNull;
 
 import me.antonjanto.mobilebutler.R;
 import me.antonjanto.mobilebutler.ui.Converter;
@@ -70,11 +69,6 @@ public class SingleOrderClosedFragment extends Fragment
      {
           NavDirections navDirections = SingleOrderClosedFragmentDirections.actionNavSingleOrderClosedToNavOrders();
           NavHostFragment.findNavController(this).navigate(navDirections);
-     }
-
-     private void navigateBack()
-     {
-
      }
 
      private void findViews(View view)

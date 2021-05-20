@@ -1,11 +1,9 @@
 package me.antonjanto.mobilebutler.model;
 
 
-import androidx.room.ColumnInfo;
 import androidx.room.Ignore;
 
 import java.io.Serializable;
-import java.lang.annotation.RetentionPolicy;
 
 public class Product implements Serializable
 {
